@@ -13,10 +13,16 @@ import { useState } from "react";
 function App() {
   const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
 
+  const addTask = (taskText) => {
+    
+    if (taskText.trim() === "") return;
+    setTasks([...tasks, taskText]); 
+  };
+
   return (
     <SafeAreaView>
       <ToDoList tasks={tasks}/>
-      <ToDoForm />
+      <ToDoForm addTask={addTask} />
     </SafeAreaView>
   );
 }

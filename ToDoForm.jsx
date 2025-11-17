@@ -4,7 +4,7 @@
  * @format
  */
 
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -12,11 +12,19 @@ import {
   Button,
 } from "react-native";
 
-function ToDoForm() {
+function ToDoForm({addTask}) {
+
+  const [taskText, setTaskText] = useState("");
+
+  // const handleAddTask = () => {
+  //   addTask(taskText);
+  //   setTaskText("");
+  // }
+
   return (
     <View style={styles.form}>
-      <TextInput style={styles.input} placeholder="Add a new task..." />
-      <Button title="Add" />
+      <TextInput style={styles.input} placeholder="Add a new task..." onChangeText={(text) => setTaskText(text)} value={taskText} />
+      <Button title="Add Task" onPress={() => addTask(taskText)}/>
     </View>
   );
 }
